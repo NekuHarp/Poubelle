@@ -1,0 +1,60 @@
+function loadGrille() {
+    var tabXY = [0, tCase, -tCase];
+
+
+
+    for (var i = 0; i < fourmis.length; i++) {
+        var newX = 0;
+        var newY = 0;
+        if (fourmis[i].transporte) {
+            if (fourmis[i].x > baseF.x) {
+                newX = fourmis[i].x - 20;
+            } else if (fourmis[i].x < baseF.x) {
+                newX = fourmis[i].x + 20;
+            } else {
+                newX = fourmis[i];
+            }
+
+            if (fourmis[i].y > baseF.y) {
+                newY = fourmis[i].y - 20;
+            } else if (fourmis[i].y < baseF.y) {
+                newY = fourmis[i].y + 20;
+            } else {
+                newY = fourmis[i];
+            }
+
+            if ((fourmis[i].x === baseF.x) && (fourmis[i].y === baseF.y)) {
+                fourmis[i].transporte = false;
+            }
+
+        } else {
+            newX = fourmis[i].x + tabXY[Math.floor(Math.random() * 3)];
+            newY = fourmis[i].y + tabXY[Math.floor(Math.random() * 3)];
+
+            while (!dansLaGrille(newX, newY)) {
+                newX = fourmis[i].x + tabXY[Math.floor(Math.random() * 3)];
+                newY = fourmis[i].y + tabXY[Math.floor(Math.random() * 3)];
+            }
+        }
+        var four = fourmis[i];
+        fourmis[i].bouger(four, newX, newY);
+
+for(var unTas in tas){
+            if(newX === tas[unTas].x && newY ===tas[unTas].y){
+                fourmis[i].transporte = true;
+                //tas[unTas].diminuer();
+            }
+        }
+    }
+
+
+
+
+
+
+
+    setTimeout(function () {
+        window.requestAnimationFrame(loadGrille);
+    }, 100);
+}
+
