@@ -1,0 +1,4 @@
+POUR LINUX UNIQUEMENT
+
+g++ TParbre.cpp -o Arbre #pour compiler
+./Arbre #pour lancer le programme ensuite
