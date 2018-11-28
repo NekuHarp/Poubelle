@@ -1,0 +1,67 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+<meta charset="UTF-8">
+<title>HTML5 Canvas Squares</title>
+<style type="text/css">
+	
+	html, body {
+  height: 100%;
+  width: 100%;
+  margin: 0px;
+  padding: 0px;
+}
+canvas {
+  display: block;
+}
+
+</style>
+</head>
+
+<body>
+	
+	<canvas id="full-canvas" style="background-color: #333;"></canvas>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+	<script type="text/javascript"> // Début du script
+
+		$(document).ready(function() { // document.ready attend que la page soit prête à utiliser le javascript
+
+  var toggle = false; // on initialise la variable toggle qui servira plus tard
+  var randomC = setInterval(function() {
+    drawSquares()
+  }, 100); // randomC appelle la fonction drawSquares toutes les 0.1 secondes
+
+  $('canvas').click(function() {
+    toggle = !toggle; // on inverse toggle
+    if (toggle) {
+      clearInterval(randomC); // si toggle alors on vide randomC qui contenait l'intervalle qui appelait la fonction drawSquares toutes les 0.1 secondes
+    } else {
+      randomC = setInterval(drawSquares, 100); // si !toggle alors on réassigne l'intervalle à randomC
+    }
+  });
+}); // Toute cette fonction sert à activer ou désactiver le fait que drawSquares est appelée chaque 0.1 secondes
+$(window).resize(drawSquares); // quand la fenêtre est redimensionnée, on rappelle la fonction drawSquares
+
+function drawSquares() { // Fonction drawSquares
+  var colours = ["#00FF00", "#FF0000", "#0000FF", "#FFFF00", "#FF00FF", "#00FFFF", "#FFFFFF"]; // On définit des couleurs dans un tableau appelé colours
+  var canvas = document.getElementById('full-canvas'); // On récupère le canvas dans la variable canvas
+  var ctx = canvas.getContext("2d"); // On récupère le fait que le canvas soit en 2D dans la variable ctx
+  var wH = $(window).height(); // La variable wH récupère la hauteur de la fenêtre
+  var wW = $(window).width(); // La variable wW récupère la largeur de la fenêtre
+  canvas.width = wW; // Avec la ligne en-dessous,
+  canvas.height = wH; // on définit que le canvas a les mêmes dimensions que la fenêtre
+
+  for (var i = 0; i < window.innerHeight / 16; i++) {
+    for (var j = 0; j < window.innerWidth / 16; j++) {
+      ctx.fillStyle = colours[Math.floor(Math.random() * colours.length)]; // Choix aléatoire de couleur parmi colours, pour choisir le contenu du prochain carré
+      ctx.fillRect(j * 16, i * 16, 12, 12); // Dessine un carré de 12 par 12 de la couleur choisie, au centre d'un carré invisible de 16 par 16
+    }
+  } // Une boucle qui découpe la fenêtre en carrés de 16 par 16, chacun contenant un carré de 12 par 12 ayant une couleur aléatoire parmi le tableau colours
+}
+
+	</script>
+
+</body>
+
+</html>      

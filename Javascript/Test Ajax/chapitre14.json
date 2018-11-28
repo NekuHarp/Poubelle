@@ -1,0 +1,17 @@
+{
+    "links": [
+        {
+            "link": "#4",
+            "txt": "Pour aller \u00e0 l'ouest, rendez vous au 4"
+        },
+        {
+            "link": "#2",
+            "txt": "Pour aller au sud, rendez vous au 2"
+        },
+        {
+            "link": "#19",
+            "txt": "Pour monter l'escalier, rendez vous au 19"
+        }
+    ],
+    "txt": "14. Vous \u00eates au pied d'une haute tour ronde. Deux portes donnent \u00e0 l'ouest et au sud, et au centre, un escalier en colima\u00e7on monte vers l'\u00e9tage sup\u00e9rieur."
+}

@@ -1,0 +1,17 @@
+{
+    "links": [
+        {
+            "link": "#8",
+            "txt": "Pour aller \u00e0 l'ouest, rendez vous au 8"
+        },
+        {
+            "link": "#14",
+            "txt": "Pour aller au nord, rendez vous au 14"
+        },
+        {
+            "link": "#10",
+            "txt": "Pour aller \u00e0 l'est, rendez vous au 10"
+        }
+    ],
+    "txt": "2. Vous \u00eates dans le hall d'entr\u00e9e. La porte sud est toujours condamn\u00e9e par une grille, mais trois autres portes sont encores ouvertes."
+}

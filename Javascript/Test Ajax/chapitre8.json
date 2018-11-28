@@ -1,0 +1,13 @@
+{
+    "links": [
+        {
+            "link": "#4",
+            "txt": "Pour aller au nord, rendez vous au 4"
+        },
+        {
+            "link": "#2",
+            "txt": "Pour aller \u00e0 l'est, rendez vous au 2"
+        }
+    ],
+    "txt": "8. Vous \u00eates dans une salle sombre dont les seules issues sont \u00e0 l'est et au nord."
+}

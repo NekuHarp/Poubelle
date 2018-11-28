@@ -1,0 +1,17 @@
+{
+    "links": [
+        {
+            "link": "#6",
+            "txt": "Pour aller \u00e0 l'ouest, rendez vous au 6"
+        },
+        {
+            "link": "#11",
+            "txt": "Pour aller au nord, rendez vous au 11"
+        },
+        {
+            "link": "#3",
+            "txt": "Pour aller au sud, rendez vous au 3"
+        }
+    ],
+    "txt": "16. Vous marchez sur ce qui doit \u00eatre l'ancien chemin de ronde. L'\u00e0-pic vertigineux rend h\u00e9las impossible toute fuite depuis cet endroit. \u00c0 l'extr\u00e9mit\u00e9 nord, une \u00e9chelle redescend \u00e0 l'int\u00e9rieur du donjon, tandis qu'un escalier de pierre descend vers l'ouest. Le chemin de ronde continue vers le sud."
+}

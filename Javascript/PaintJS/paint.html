@@ -1,0 +1,83 @@
+<html>
+	<head>
+		<meta charset="utf-8"/>
+		<title>La peinture c'est rigolo</title>
+		<style>
+		  body {
+			background-color: grey;
+			margin: 0px;
+			padding: 0px;
+		  }
+		</style>
+	</head>
+	
+	
+	<body align=center>
+		<h1>Incroyable ! Il peint en Javascript !</h1>
+		<div id="paint">
+			<canvas id="canvas" width="400" height="400"></canvas>
+		</div><br>
+		Taille du pinceau :<br>
+		<button id="taillemoins" type="button"><<</button> <b><font size=5><span id="taillepinceau"></span></font></b> <button id="tailleplus" type="button">>></button><br>
+		<button id="resetaillebouton" type="button">Taille de base</button><br>
+		Couleur sélectionnée :<br><b><font size=5><span id="couleuractuelle"></span></font></b><br><br>
+		Choix des couleurs<br>
+		<button id="noirbouton" type="button">Noir</button>
+		<button id="blancbouton" type="button">Blanc</button><br>
+		<button id="rougebouton" type="button">Rouge</button>
+		<button id="vertbouton" type="button">Vert</button>
+		<button id="bleubouton" type="button">Bleu</button><br>
+		<button id="magentabouton" type="button">Magenta</button>
+		<button id="cyanbouton" type="button">Cyan</button>
+		<button id="jaunebouton" type="button">Jaune</button><br><br>
+		<button id="remplirbouton" type="button">Tout remplir</button><br>
+		<button id="resetbouton" type="button">Tout effacer</button>
+		
+		
+		
+		<script>
+			var canvas = document.getElementById('canvas');
+			var ctx = canvas.getContext('2d');
+			ctx.lineWidth = 3;
+			ctx.lineJoin = 'round';
+			ctx.lineCap = 'round';
+			ctx.strokeStyle = '#000000';
+			document.getElementById('taillemoins').addEventListener("click",function(evt) { ctx.lineWidth--; document.getElementById('taillepinceau').textContent = ctx.lineWidth;});
+			document.getElementById('tailleplus').addEventListener("click",function(evt) { ctx.lineWidth++; document.getElementById('taillepinceau').textContent = ctx.lineWidth;});
+			document.getElementById('taillepinceau').textContent = ctx.lineWidth;
+			document.getElementById('couleuractuelle').textContent = "Noir";
+			document.getElementById('resetaillebouton').addEventListener("click",function(evt) { ctx.lineWidth = 3; document.getElementById('taillepinceau').textContent = ctx.lineWidth;});
+			document.getElementById('noirbouton').addEventListener("click",function(evt) { ctx.strokeStyle = '#000000'; document.getElementById('couleuractuelle').textContent = "Noir";});
+			document.getElementById('blancbouton').addEventListener("click",function(evt) { ctx.strokeStyle = '#FFFFFF'; document.getElementById('couleuractuelle').textContent = "Blanc";});
+			document.getElementById('rougebouton').addEventListener("click",function(evt) { ctx.strokeStyle = '#FF0000'; document.getElementById('couleuractuelle').textContent = "Rouge";});
+			document.getElementById('vertbouton').addEventListener("click",function(evt) { ctx.strokeStyle = '#00FF00'; document.getElementById('couleuractuelle').textContent = "Vert";});
+			document.getElementById('bleubouton').addEventListener("click",function(evt) { ctx.strokeStyle = '#0000FF'; document.getElementById('couleuractuelle').textContent = "Bleu";});
+			document.getElementById('magentabouton').addEventListener("click",function(evt) { ctx.strokeStyle = '#FF00FF'; document.getElementById('couleuractuelle').textContent = "Magenta";});
+			document.getElementById('cyanbouton').addEventListener("click",function(evt) { ctx.strokeStyle = '#00FFFF'; document.getElementById('couleuractuelle').textContent = "Cyan";});
+			document.getElementById('jaunebouton').addEventListener("click",function(evt) { ctx.strokeStyle = '#FFFF00'; document.getElementById('couleuractuelle').textContent = "Jaune";});
+			document.getElementById('remplirbouton').addEventListener("click",function(evt) { ctx.fillStyle=ctx.strokeStyle; ctx.fillRect(0,0,canvas.width,canvas.height);});
+			document.getElementById('resetbouton').addEventListener("click",function(evt) { ctx.fillStyle='#FFFFFF'; ctx.fillRect(0,0,canvas.width,canvas.height);});
+			ctx.fillStyle="#FFFFFF";
+			ctx.fillRect(0,0,canvas.width,canvas.height);
+			var peinture = document.getElementById('paint');
+			var paint_style = getComputedStyle(peinture);
+			var mouse = {x: 0, y: 0};
+			canvas.addEventListener('mousemove', function(evt) {
+				mouse.x = evt.pageX - this.offsetLeft;
+				mouse.y = evt.pageY - this.offsetTop;
+			}, false);
+			canvas.addEventListener('mousedown', function(evt) {
+				ctx.beginPath();
+				ctx.moveTo(mouse.x, mouse.y);
+				canvas.addEventListener('mousemove', ecriture, false);
+			}, false);
+			canvas.addEventListener('mouseup', function(evt) {
+				canvas.removeEventListener('mousemove', ecriture, false);
+			}, false);
+			var ecriture = function(evt) {
+				ctx.lineTo(mouse.x, mouse.y);
+				ctx.stroke();
+			};
+		</script>
+	</body>
+</html>            
